@@ -38,7 +38,7 @@ class ActiveRecord::SchemaDumper
         pk, _ = @connection.pk_and_sequence_for(table)
       end
 
-      tbl.print "  create_table #{remove_prefix_and_suffix(table).inspect}"
+      tbl.print "  create_table #{table.inspect}"
       if columns.detect { |c| c.name == pk && c.type == :integer}
         if pk != 'id'
           tbl.print %Q(, :primary_key => "#{pk}")
